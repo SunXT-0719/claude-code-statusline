@@ -1,12 +1,12 @@
 # Claude Code Statusline
 
-A minimal two-line status bar for Claude Code showing model name, git branch, context window usage, and prompt cache hit rate.
+A minimal status bar for Claude Code showing model name, git branch, context window usage, prompt cache hit rate, and session cost (CNY).
 
 ## Preview
 
 ```
 Opus |  main
-ctx: 12% | cache: 68%
+ctx: 12% | cache: 68% | ¥0.03
 /home/user/projects/my-app
 ```
 
@@ -52,6 +52,7 @@ Open a new Claude Code session — the status bar appears immediately.
 | 1 | Git branch | `git branch --show-current` in the working directory |
 | 2 | Context usage % | `context_window.used_percentage` — input tokens / context window size |
 | 2 | Cache hit rate % | `cache_read / (input + cache_creation + cache_read)` from the last API call |
+| 2 | Session cost (¥) | Estimated cost in CNY based on token usage and DeepSeek V4 Pro pricing |
 | 3 | Working directory | `cwd` from stdin JSON (the project directory Claude Code is running in) |
 
-> **Note:** Before the first API call (and after `/compact`), `current_usage` is `null` and the cache hit rate shows `0%`. This is expected.
+> **Note:** Before the first API call (and after `/compact`), `current_usage` is `null`. Cache hit rate and session cost display `-` in this case.
